@@ -31,6 +31,8 @@ export const runTestCase = (
     const spawnOpts = {
         timeout: config.timeout,
         env: {
+            JAVA_HOME: global.process.env.JAVA_HOME,
+            PATH: global.process.env.PATH,
             DEBUG: 'true',
             CPH: 'true',
         },
@@ -53,6 +55,14 @@ export const runTestCase = (
         case 'python': {
             process = spawn(
                 language.compiler, // 'python3' or 'python' TBD
+                [binPath, ...language.args],
+                spawnOpts,
+            );
+            break;
+        }
+        case 'scala': {
+            process = spawn(
+                language.compiler,
                 [binPath, ...language.args],
                 spawnOpts,
             );

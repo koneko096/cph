@@ -186,6 +186,25 @@
                     "default": "javac",
                     "description": "Command used to compile java files."
                 },
+                "cph.language.scala.Args": {
+                    "title": "Running flags for Scala",
+                    "type": "string",
+                    "default": "",
+                    "description": "Space seperated additional flags passed to scala while running your file. Example '-verbose'"
+                },
+                "cph.language.scala.SubmissionCompiler": {
+                    "type": "string",
+                    "default": "Scala 2.12.8",
+                    "enum": [
+                        "Scala 2.12.8"
+                    ],
+                    "description": "The compiler chosen in the drop down during Codeforces submission for Scala"
+                },
+                "cph.language.scala.Command": {
+                    "type": "string",
+                    "default": "scala",
+                    "description": "Command used to running scala files."
+                },
                 "cph.general.firstTime": {
                     "title": "Show welcome message",
                     "type": "boolean",
@@ -202,13 +221,14 @@
                         "cpp",
                         "python",
                         "rust",
-                        "java"
+                        "java",
+                        "scala"
                     ],
                     "description": "The default language for problems imported via Competitive Companion (None will give option to select language on importing problem every time)"
                 },
                 "cph.general.menuChoices": {
                     "type": "string",
-                    "default": "cpp java python c rust",
+                    "default": "cpp java python c rust scala",
                     "description": "Space separated languages, in top to bottom order, shown in menu when a problem is imported via Competitive Companion. Example 'java python' would show java on top, followed by python."
                 },
                 "cph.general.useShortCodeForcesName": {

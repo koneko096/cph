@@ -19,6 +19,9 @@ export type prefSection =
     | 'language.java.Args'
     | 'language.java.SubmissionCompiler'
     | 'language.java.Command'
+    | 'language.scala.Args'
+    | 'language.scala.SubmissionCompiler'
+    | 'language.scala.Command'
     | 'language.python.Args'
     | 'language.python.SubmissionCompiler'
     | 'language.python.Command'
@@ -33,7 +36,7 @@ export type Language = {
     skipCompile: boolean;
 };
 
-export type LangNames = 'python' | 'c' | 'cpp' | 'rust' | 'java';
+export type LangNames = 'python' | 'c' | 'cpp' | 'rust' | 'java' | 'scala';
 
 export type TestCase = {
     input: string;

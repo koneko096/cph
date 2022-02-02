@@ -46,6 +46,9 @@ export const getRustArgsPref = (): string[] =>
 export const getJavaArgsPref = (): string[] =>
     getPreference('language.java.Args').split(' ') || [];
 
+export const getScalaArgsPref = (): string[] =>
+    getPreference('language.scala.Args').split(' ') || [];
+
 export const getFirstTimePref = (): boolean =>
     getPreference('general.firstTime') || 'true';
 
@@ -78,6 +81,8 @@ export const getRustCommand = (): string =>
     getPreference('language.rust.Command') || 'rustc';
 export const getJavaCommand = (): string =>
     getPreference('language.java.Command') || 'javac';
+export const getScalaCommand = (): string =>
+    getPreference('language.scala.Command') || 'scala';
 
 export const getMenuChoices = (): string[] =>
     getPreference('general.menuChoices').split(' ');
@@ -94,6 +99,11 @@ export const getLanguageId = (srcPath: string): number => {
 
         case '.java': {
             compiler = getPreference('language.java.SubmissionCompiler');
+            break;
+        }
+
+        case '.scala': {
+            compiler = getPreference('language.scala.SubmissionCompiler');
             break;
         }
 

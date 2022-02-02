@@ -12,11 +12,13 @@ import {
     getPythonArgsPref,
     getRustArgsPref,
     getJavaArgsPref,
+    getScalaArgsPref,
     getCCommand,
     getCppCommand,
     getPythonCommand,
     getRustCommand,
     getJavaCommand,
+    getScalaCommand,
 } from './preferences';
 import { Language, Problem } from './types';
 
@@ -77,6 +79,14 @@ export const getLanguage = (srcPath: string): Language => {
                 args: [...getJavaArgsPref()],
                 compiler: getJavaCommand(),
                 skipCompile: false,
+            };
+        }
+        case 'scala': {
+            return {
+                name: langName,
+                args: [...getScalaArgsPref()],
+                compiler: getScalaCommand(),
+                skipCompile: true,
             };
         }
     }
