@@ -16,6 +16,7 @@ import {
 import { getProblemName } from './submit';
 import { spawn } from 'child_process';
 import { getJudgeViewProvider } from './extension';
+import { words_in_text } from './utilsPure';
 
 const emptyResponse: CphEmptyResponse = { empty: true };
 let savedResponse: CphEmptyResponse | CphSubmitResponse = emptyResponse;
@@ -127,7 +128,7 @@ export const setupCompanionServer = () => {
         server.listen(config.port);
         server.on('error', (err) => {
             vscode.window.showErrorMessage(
-                `CPH server encountered an error: "${err.message}" , companion may not work.`,
+                `Are multiple VSCode windows open? CPH will work on the first opened window. CPH server encountered an error: "${err.message}" , companion may not work.`,
             );
         });
         console.log('Companion server listening on port', config.port);
@@ -145,7 +146,13 @@ export const getProblemFileName = (problem: Problem, ext: string) => {
             isCodeforcesUrl(new URL(problem.url)),
             useShortCodeForcesName(),
         );
-        return `${problem.name.replace(/\W+/g, '_')}.${ext}`;
+
+        const words = words_in_text(problem.name);
+        if (words === null) {
+            return `${problem.name.replace(/\W+/g, '_')}.${ext}`;
+        } else {
+            return `${words.join('_')}.${ext}`;
+        }
     }
 };
 
